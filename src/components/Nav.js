@@ -1,6 +1,6 @@
 import React from "react";
 import { LuListTodo } from "react-icons/lu";
-import { RxAvatar } from "react-icons/rx";
+import avatar from "../assets/avatar.jpg";
 
 export default function Nav() {
   return (
@@ -14,9 +14,18 @@ export default function Nav() {
           </span>
           Todo Lister
         </h1>
-        <button className="font-semibold text-zinc-900 bg-yellow-300 border-2 border-yellow-200 px-5 py-1 rounded-3xl">
-          <RxAvatar />
-        </button>
+        <div className="flex items-center justify-center gap-2">
+          <div className="h-[40px] w-[40px] rounded-full overflow-hidden">
+            <img
+              alt=""
+              src={avatar}
+              className="h-[100%] w-[100%] rounded-full"
+            />
+          </div>
+          <p className="text-[17px] font-semibold text-yellow-300 visible">
+            Mahafuz Ahamed
+          </p>
+        </div>
       </div>
     </div>
   );

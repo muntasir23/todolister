@@ -1,15 +1,17 @@
-body{
-  background:#fff7ed;
+body {
+  background: #fff7ed;
 }
 
 .blurry {
   backdrop-filter: blur(15px);
 }
 
-button:active{
+button:active {
   transform: scale(0.96);
 }
 
-
-
-
+@media (max-width: 980px) {
+  .visible {
+    display: none;
+  }
+}
