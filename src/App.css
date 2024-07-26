@@ -1,0 +1,15 @@
+body{
+  background:#fff7ed;
+}
+
+.blurry {
+  backdrop-filter: blur(15px);
+}
+
+button:active{
+  transform: scale(0.96);
+}
+
+
+
+
