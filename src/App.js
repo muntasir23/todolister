@@ -1,10 +1,10 @@
 import { Provider } from "react-redux";
 import "./App.css";
 import Nav from "./components/Nav";
-import store from "./redux/store";
+import TodoFooter from "./components/TodoFooter";
 import TodoHeader from "./components/TodoHeader";
 import TodoList from "./components/TodoList";
-import TodoFooter from "./components/TodoFooter";
+import store from "./redux/store";
 
 function App() {
   return (
