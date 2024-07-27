@@ -2,24 +2,38 @@ import React, { useState } from "react";
 import { LiaClipboardListSolid } from "react-icons/lia";
 import { GoPlusCircle } from "react-icons/go";
 import { LuCheckCheck } from "react-icons/lu";
+import { added, allcompleted, clearcompleted } from "../redux/todos/action";
+import { useDispatch } from "react-redux";
 
 export default function TodoHeader() {
-  
   const [text, setText] = useState("");
 
-  const handleTextchange = (e) =>{
-    setText(e.target.value)
+  const dispatch = useDispatch();
+
+  const handleTextchange = (e) => {
+    setText(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(added(text));
+    setText("");
+  };
+
+  const handleCompleteAll = () =>{
+    dispatch(allcompleted())
   }
 
-  const handleSubmit = (e) =>{
-    e.preventDefault()
-    console.log(text);
-    setText("")
+  const handleClearComplete = () =>{
+    dispatch(clearcompleted())
   }
 
   return (
     <div className="w-[100%] rounded">
-      <form onSubmit={handleSubmit} className="bg-zinc-200 p-2 flex items-center justify-between">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-zinc-200 p-2 flex items-center justify-between"
+      >
         <div className="flex items-center justify-center gap-2">
           <label htmlFor="textInput" className="text-[24px]">
             <LiaClipboardListSolid />
@@ -40,10 +54,15 @@ export default function TodoHeader() {
         </div>
       </form>
       <div className="mt-4 flex items-center justify-between">
-        <h3 className="text-gray-800 md:text-[15px] text-[12px] cursor-pointer flex items-center justify-center gap-1"> <LuCheckCheck /> Complete All Taks</h3>
-        <h3 className="text-gray-800 md:text-[15px] text-[12px] cursor-pointer">Clear completed</h3>
+        <h3 onClick={handleCompleteAll} className="text-gray-800 md:text-[15px] text-[12px] cursor-pointer flex items-center justify-center gap-1">
+          {" "}
+          <LuCheckCheck /> Complete All Taks
+        </h3>
+        <h3 onClick={handleClearComplete} className="text-gray-800 md:text-[15px] text-[12px] cursor-pointer">
+          Clear completed
+        </h3>
       </div>
       <hr className="mt-4"></hr>
     </div>
   );
-} 
+}
